@@ -1,12 +1,8 @@
 package com.checkers;
 
 import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Checkers extends Application {
@@ -20,6 +16,7 @@ public class Checkers extends Application {
 
         primaryStage.setTitle("Checkers");
         GridPane gridPane = new GridPane();
+        Controller.getInstance().setGridPane(gridPane);
 
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {

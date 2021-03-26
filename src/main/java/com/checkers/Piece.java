@@ -8,36 +8,36 @@ public class Piece extends Circle {
     private final int x;
     private final int y;
     private PieceType type;
+    private boolean isChosen = false;
 
-    public PieceType getType()
-    {
+    public PieceType getType() {
         return type;
     }
 
-    public Piece (PieceType type, double x, double y )
-    {
-        //super(x, y, choosePaint(type));
-        super(x,y,Configurations.SIDE_SIZE*0.4,choosePaint(type));
-        this.setCenterX(Configurations.SIDE_SIZE);
-        this.setCenterY(Configurations.SIDE_SIZE);
-        //this.setRadius(Configurations.SIDE_SIZE*0.1);
+    public Piece(PieceType type, double x, double y) {
+        super(x, y, Configurations.SIDE_SIZE * 0.4, choosePaint(type));
         this.type = type;
         this.x = (int) x;
         this.y = (int) y;
 
+        this.setOnMouseClicked(event -> Controller.getInstance().pieceClicked(this));
     }
 
-    private static Paint choosePaint( PieceType type) {
-        if(type == PieceType.WHITE)
-        {
+    private static Paint choosePaint(PieceType type) {
+        if (type == PieceType.WHITE) {
             return Color.WHITE;
-        }
-        else
-        {
+        } else {
             return Color.BLACK;
         }
 
+    }
 
+    public boolean isChosen() {
+        return isChosen;
+    }
+
+    public void setChosen(boolean chosen) {
+        isChosen = chosen;
     }
 
     public int getCol() {
@@ -48,4 +48,22 @@ public class Piece extends Circle {
         return y;
     }
 
+    @Override public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Piece piece = (Piece) o;
+
+        if (x != piece.x)
+            return false;
+        return y == piece.y;
+    }
+
+    @Override public int hashCode() {
+        int result = x;
+        result = 31 * result + y;
+        return result;
+    }
 }

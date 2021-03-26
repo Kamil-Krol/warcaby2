@@ -14,7 +14,7 @@ public class Field extends Rectangle {
         this.setWidth(Configurations.SIDE_SIZE);
         this.x = (int) x;
         this.y = (int) y;
-        //this.setOnMouseClicked(event -> Controller.getInstance().onClick(this));
+        this.setOnMouseClicked(event -> Controller.getInstance().onFieldClick(this));
     }
 
     private static Paint choosePaint(double x, double y) {
