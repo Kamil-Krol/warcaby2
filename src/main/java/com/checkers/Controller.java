@@ -62,7 +62,8 @@ public class Controller {
 
 
                 //if(gridPane.contains(field.getCol()+1,field.getRow()+1))
-            //if(gridPane.)
+            //status
+            // if(gridPane.)
 
 
 
